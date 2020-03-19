@@ -1,7 +1,7 @@
 name: lpstudent
 description: A new Flutter project.
 
-version: 1.0.0+9
+version: 1.0.0+10
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -12,12 +12,12 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   expandable: ^3.0.1
-  google_sign_in: ^3.2.4
+  
   shared_preferences: any
   flutter_calendar_carousel: any
   qr_flutter: any
   path_provider: ^1.6.1
-  firebase_auth: 0.15.4
+  
   table_calendar: ^2.2.2
   intl: any
   outline_material_icons: any
@@ -26,12 +26,20 @@ dependencies:
   rxdart: 0.20.0
   cloud_firestore: 0.13.3
 
+  flutter_signin_button: 1.0.0
+
+  #Codemagic tutorial 
+  firebase_auth: 0.15.4
+  google_sign_in: ^3.2.4
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.6.1"
 
 module:
-
   androidX: true
 
 # The following section is specific to Flutter.
@@ -45,3 +53,15 @@ flutter:
     - assets/images/snowDay/snow.jpg
     - assets/images/logo2.png
     - assets/images/appicon.png
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/roboto/Roboto-Regular.ttf
+
+
+  
+flutter_icons:
+  image_path: "assets/appicon.png" 
+  android: true
+  ios: true

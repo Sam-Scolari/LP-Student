@@ -1,70 +1,67 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rxdart/rxdart.dart';
+import 'storage.dart';
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
+final Firestore _db = Firestore.instance;
 
-class AuthService {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final Firestore _db = Firestore.instance;
+String email;
+String imageUrl;
+String firstName;
+String lastName;
 
-  Observable<FirebaseUser> user;
-  Observable<Map<String, dynamic>> profile;
-  PublishSubject loading = PublishSubject();
+Future<String> signInWithGoogle() async {
+  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+  final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount.authentication;
 
-  AuthService(){
-    user = Observable(_auth.onAuthStateChanged);
+  final AuthCredential credential = GoogleAuthProvider.getCredential(
+    accessToken: googleSignInAuthentication.accessToken,
+    idToken: googleSignInAuthentication.idToken,
+  );
 
-    profile = user.switchMap((FirebaseUser u) {
-      if (u != null){
-        return _db.collection('users').document(u.uid).snapshots().map((snap) => snap.data);
-      } else {
-        return Observable.just({ });
-      }
-    });
-  }
+  final AuthResult authResult = await _auth.signInWithCredential(credential);
+  final FirebaseUser user = authResult.user;
 
-  Future<FirebaseUser> googleSignIn() async {
-    loading.add(true);
-    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    
-    //FirebaseUser user = await _auth.signInWithGoogle(idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
+  assert(!user.isAnonymous);
+  assert(await user.getIdToken() != null);
 
+  final FirebaseUser currentUser = await _auth.currentUser();
+  assert(user.uid == currentUser.uid);
 
-    AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
-    assert(user.email != null);
-    assert(user.displayName != null);
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
+  try{
+    int.parse(user.email.substring(0, 6));
 
-
-    final FirebaseUser currentUser = await _auth.currentUser();
-    assert(user.uid == currentUser.uid);
-
-    updateUserData(user);
-    loading.add(false);
-
-    return user;
-
-
-  }
-
-  void updateUserData(FirebaseUser user) async {
     DocumentReference ref = _db.collection('users').document(user.email.substring(0, 6));
-    return ref.setData({
+    ref.setData({
       'email': user.email,
       'photoURL': user.photoUrl,
-      'displayName': user.displayName,
+      'firstName': user.displayName.split(" ")[0],
+      'lastName': user.displayName.split(" ")[1],
       'points': 0
     }, merge: true);
-  }
 
-  void signOut() => _auth.signOut();
+    firstName = user.displayName.split(" ")[0];
+    lastName = user.displayName.split(" ")[1];
+    email = user.email;
+    imageUrl = user.photoUrl;
+
+    Storage.writeContent(firstName+"\n"+lastName+"\n"+email+"\n"+imageUrl);
+
+    print(user.displayName);
+    print(user.email);
+    print(user.photoUrl);
+
+    return 'signInWithGoogle succeeded: $user';
+
+  } catch (Exception){
+    signOutGoogle();
+    return '0';
+  }
 }
 
-final AuthService authService = AuthService();
+void signOutGoogle() async{
+  await googleSignIn.signOut();
+  print("User Sign Out");
+}

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/foundation.dart';
 
-import 'main.dart';
+import 'home.dart';
 import 'settings.dart';
 
 class Announcements extends StatefulWidget {

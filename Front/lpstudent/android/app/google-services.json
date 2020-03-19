@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:960444341259:android:d847798f897ca0975dfb0e",
+        "android_client_info": {
+          "package_name": "com.lpscan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960444341259-drfoendbh07s461v5qg7v9atkgbufrkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lpscan",
+            "certificate_hash": "7a0ec0ee16a6be0dbe7683ad5ff6c908e87a7536"
+          }
+        },
+        {
+          "client_id": "960444341259-3enkjbd4pbf013l0533dilpau41hhune.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWclrJJvc4D2vhC36GR_AWvJReuDm1sA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960444341259-3enkjbd4pbf013l0533dilpau41hhune.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:960444341259:android:798ec90791a0023f5dfb0e",
         "android_client_info": {
           "package_name": "com.lpstudent"
@@ -15,7 +52,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "960444341259-37uv00dmi90dp287l07i1uvbgh91g7qk.apps.googleusercontent.com",
+          "client_id": "960444341259-bk9so4ocegiasiotgg231jfsp0890gjl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.lpstudent",

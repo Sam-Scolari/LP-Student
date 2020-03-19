@@ -1,4 +1,6 @@
+import 'package:lpstudent/auth.dart';
 import 'main.dart';
+import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -48,28 +50,39 @@ class _SettingsState extends State<Settings> {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    //nothing yet
+                    showDialog(context: context,
+                    builder: (BuildContext context){
+                      return AlertDialog(
+                        title: Text("Restore?"),
+                        content: Text("This will reset all settings to their defaults."),
+                        actions: <Widget>[
+                          FlatButton(onPressed: (){Navigator.of(context).pop();}, child: Text("CANCEL", style: TextStyle(color: Colors.red),)),
+                          FlatButton(onPressed: (){Navigator.of(context).pop();}, child: Text("ACCEPT", style: TextStyle(color: Colors.red)),)
+
+                        ],
+                      );
+                    });
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.more_vert),
+                  icon: Icon(Icons.more_vert, color: Colors.grey,),
                   onPressed: () {},
                 )
               ],
               backgroundColor: Colors.white,
             ),
-            body: Center(
+            body: Padding(padding: EdgeInsets.all(10),child:Center(
                 child: Stack(children: [
               Column(children: [
                 Card(
                   elevation: 4,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)),
-                  child: ClipRRect(
+                  child: Padding(padding: EdgeInsets.all(10),child:ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
                       child: Column(children: [
                         Text("Notifications", style: TextStyle(fontSize: 22)),
-                        Row(children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                           Text(
                             "Lunch Menu",
                             style: TextStyle(fontSize: 17),
@@ -84,7 +97,7 @@ class _SettingsState extends State<Settings> {
                             activeColor: Colors.green,
                           ),
                         ]),
-                        Row(children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                           Text(
                             "Breakfast Menu",
                             style: TextStyle(fontSize: 17),
@@ -99,7 +112,7 @@ class _SettingsState extends State<Settings> {
                             activeColor: Colors.green,
                           ),
                         ]),
-                        Row(children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                           Text(
                             "Announcements",
                             style: TextStyle(fontSize: 17),
@@ -116,77 +129,15 @@ class _SettingsState extends State<Settings> {
                         ]),
                       ])),
                 ),
-                Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Column(children: [
-                        Text("Personal Information",
-                            style: TextStyle(fontSize: 22)),
-                        Row(children: [
-                          Text(
-                            "First Name",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        ]),
-                        Row(children: [
-                          Text(
-                            "Last Name",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                          // TextField(
-                          //   obscureText: true,
-                          //   decoration: InputDecoration(
-                          //     border: OutlineInputBorder(),
-                          //     labelText: 'Password',
-                          //   ),
-                          // )
-                        ]),
-                        Row(children: [
-                          Text(
-                            "Profile Picture",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        ]),
-                      ])),
                 ),
+                Padding(padding: EdgeInsets.only(top: 10), child: MaterialButton(color: Colors.red,onPressed: (){
+                  signOutGoogle();
+                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Login()));
+                  },
+                   child: Text("Sign Out", style: TextStyle(color: Colors.white),)))
               ]),
-              Visibility(
-                  visible: _visible,
-                  child: FractionallySizedBox(
-                      heightFactor: 1,
-                      widthFactor: 1,
-                      child: Container(
-                          color: Color.fromARGB(200, 0, 0, 0),
-                          child: Center(
-                              child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(15.0)),
-                                  child: FractionallySizedBox(
-                                    widthFactor: .8,
-                                    heightFactor: .66,
-                                    child: Column(children: [
-                                      Image.asset(
-                                        "assets/images/logo2.png",
-                                        scale: 2.5,
-                                      ),
-                                      Text("Samuel"),
-                                      Text("Scolari"),
-                                      Image.asset("assets/images/barcode.png",
-                                          scale: 2.25),
-                                      Text("200276"),
-                                      Center(
-                                          child: Row(
-                                        children: [
-                                          Text("Senior"),
-                                          Text("2019-2020")
-                                        ],
-                                      ))
-                                    ]),
-                                  ))))))
-            ]))));
+              
+            ])))));
   }
 }
