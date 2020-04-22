@@ -3,14 +3,17 @@ import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/foundation.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
+import 'package:intl/intl.dart';
 
 import 'home.dart';
 import 'settings.dart';
-
+import 'auth.dart';
+import 'picture.dart';
 class Announcements extends StatefulWidget {
   final String value;
-
-  Announcements({Key key, this.value}) : super(key: key);
+  final String picture;
+  Announcements({Key key, this.value, this.picture}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -19,17 +22,8 @@ class Announcements extends StatefulWidget {
 }
 
 class _AnnouncementsState extends State<Announcements> {
-  bool _visible = false;
-
-  void _toggle() {
-    setState(() {
-      _visible = !_visible;
-    });
-  }
-
   List data;
   _getAnnouncementsList() {
-    //data
     Firestore.instance
         .collection('generalData')
         .document(widget.value)
@@ -40,26 +34,125 @@ class _AnnouncementsState extends State<Announcements> {
         data = ds.data['announcements'];
       });
     });
+    //print(data);
+  }
+
+  List savedData = new List();
+  _getSavedDataList() {
+    Firestore.instance
+        .collection('users')
+        .document(email.substring(0, 6))
+        .get()
+        .then((DocumentSnapshot ds) {
+      // use ds as a snapshot
+      setState(() {
+        savedData = ds.data['savedAnnouncements'];
+      });
+    });
+  }
+  int range = 0;
+  bool forward = true;
+  int dayIWant = 0;
+  int dayItIs = DateTime.now().weekday;
+  _getDate(){
+    if (widget.value == "monday"){
+      dayIWant = 1;
+    }
+    if (widget.value == "tuesday"){
+      dayIWant = 2;
+    }
+    if (widget.value == "wednesday"){
+      dayIWant = 3;
+    }
+    if (widget.value == "thursday"){
+      dayIWant = 4;
+    }
+    if (widget.value == "friday"){
+      dayIWant = 5;
+    }
+
+    if (dayItIs >= dayIWant){
+      range = dayItIs - dayIWant;
+    }
+    else {
+      range = dayIWant - dayItIs;
+    }
+
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    BackButtonInterceptor.add(myInterceptor);
+  }
+
+  @override
+  void dispose() {
+    BackButtonInterceptor.remove(myInterceptor);
+    super.dispose();
+  }
+
+  bool myInterceptor(bool stopDefaultButtonEvent) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
+    return true;
+  }
+
+  Color iconColor = Colors.grey;
+
+  bool _iconColorCheck(String announcement) {
+    if (announcement != null && savedData.contains(announcement)) {
+      return true;
+      // setState(() {
+      //   iconColor = Colors.yellow;
+      // });
+    } else {
+      return false;
+      // setState(() {
+      //   iconColor = Colors.grey;
+      // });
+    }
+  }
+
+  _showAnnouncement(String announcement) {}
+
+  _addAnnouncement(String announcement) {
+    final Firestore _db = Firestore.instance;
+    print("adding announcement");
+
+    List temp = new List();
+    temp.add(announcement);
+
+    if (_iconColorCheck(announcement)) {
+      DocumentReference ref =
+          _db.collection('users').document(email.substring(0, 6));
+      ref.updateData({'savedAnnouncements': FieldValue.arrayRemove(temp)});
+    } else {
+      DocumentReference ref =
+          _db.collection('users').document(email.substring(0, 6));
+      ref.updateData({'savedAnnouncements': FieldValue.arrayUnion(temp)});
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     _getAnnouncementsList();
+    _getSavedDataList();
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
               centerTitle: true,
               title: Image.asset(
-                'assets/images/logo2.png',
+                'assets/images/LP_Student/LP_Student.png',
                 width: 40,
                 height: 40,
               ),
               leading: IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Home()),
-                  );
+                  Navigator.pop(context);
                 },
                 icon: Icon(
                   Icons.arrow_back,
@@ -67,15 +160,6 @@ class _AnnouncementsState extends State<Announcements> {
                 ),
               ),
               actions: [
-                IconButton(
-                  icon: Icon(
-                    Icons.credit_card,
-                    color: Colors.grey,
-                  ),
-                  onPressed: () {
-                    _toggle();
-                  },
-                ),
                 IconButton(
                   icon: Icon(
                     Icons.settings,
@@ -113,14 +197,15 @@ class _AnnouncementsState extends State<Announcements> {
                                 offset: Offset(0, 0))
                           ]),
                           child: Image.asset(
-                              "./assets/images/generalDay/gen.jpeg")),
+                              Picture.pickAll())),
                       Container(
                           padding: EdgeInsets.all(12),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 //add python short date Wednesday, Nov. 20th
-                                Text(snapshot.data['date'],
+                                // Text(DateFormat('EEEE, MMMM dd').format(DateTime.now()), //heehehehehhrhreheheehrh widget.value
+                                Text(snapshot.data["date"],
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25)),
@@ -150,55 +235,84 @@ class _AnnouncementsState extends State<Announcements> {
                           child: Container(
                               padding: EdgeInsets.all(8),
                               child: Text(
-                                snapshot.data['birthdays'],
+                                "Happy Birthday to: "+snapshot.data['birthdays'],
                                 textAlign: TextAlign.justify,
                               ))),
                       Divider(),
-                      Container(child: _myListView(context, data)),
+                      data == null
+                          ? Container(
+                              child: Text("No announcements for today."))
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                return Column(children: [
+                                  ListTile(
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              content: Text(data[index]),
+                                              actions: <Widget>[
+                                                Row(
+                                                  children: <Widget>[
+                                                    IconButton(
+                                                        onPressed: () =>
+                                                            setState(() {
+                                                              _addAnnouncement(
+                                                                  data[index]);
+                                                            }),
+                                                        icon: Icon(
+                                                            _iconColorCheck(
+                                                                    data[index])
+                                                                ? Icons.star
+                                                                : Icons
+                                                                    .star_border,
+                                                            color: _iconColorCheck(
+                                                                    data[index])
+                                                                ? Colors.yellow
+                                                                : Colors.grey)),
+                                                    Text(_iconColorCheck(data[index]) ? "Saved" : "Not Saved"),
+                                                  ],
+                                                ),
+                                                FlatButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: Text("Close",
+                                                      style: TextStyle(
+                                                          color: Colors.green)),
+                                                )
+                                              ],
+                                            );
+                                          });
+                                    },
+                                    title: Text(
+                                      data[index],
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                    ),
+                                    leading: IconButton(
+                                        onPressed: () => setState(() {
+                                              _addAnnouncement(data[index]);
+                                            }),
+                                        icon: Icon(
+                                            _iconColorCheck(data[index])
+                                                ? Icons.star
+                                                : Icons.star_border,
+                                            color: _iconColorCheck(data[index])
+                                                ? Colors.yellow
+                                                : Colors.grey)),
+                                  ),
+                                  Divider()
+                                ]);
+                              },
+                            )
                     ]))
                   ]);
                 })));
-  }
-
-  Widget _myListView(BuildContext context, List data) {
-    List announceData = data;
-
-    bool _isVis = false;
-    bool isPressed = false;
-
-    _updateStar() {
-      isPressed = !isPressed;
-    }
-
-    return data == null
-        ? Container(child: Text("No announcements for today."))
-        : ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemCount: announceData.length,
-            itemBuilder: (context, index) {
-              return Column(children: [
-                ListTile(
-                  onTap: () => setState(() {
-                    _isVis = !_isVis;
-                  }),
-                  title: Text(
-                    announceData[index],
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                  leading: IconButton(
-                      onPressed: () => setState(() {
-                            _updateStar();
-                          }),
-                      icon: (isPressed)
-                          ? Icon(Icons.star, color: Colors.yellow)
-                          : Icon(Icons.star_border, color: Colors.grey)),
-                ),
-                Divider()
-              ]);
-            },
-          );
   }
 }

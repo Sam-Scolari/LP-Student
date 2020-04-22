@@ -74,7 +74,3 @@ def main():
 
 
     return date, birthday, announcements, dismissal, avgTime, day
-
-    
-    
-main()

@@ -1,6 +1,7 @@
 import bs4 as bs
 import urllib.request
-
+# needs to be UPDATED
+# code should only find the lunch and breakfast of the current day
 
 def getBreakfast(dayData):
     breakfast = ''
@@ -84,5 +85,3 @@ def main():
         ind += 1
     print(data)
     return data
-
-main()

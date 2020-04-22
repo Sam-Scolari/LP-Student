@@ -3,7 +3,7 @@ import 'main.dart';
 import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 class Settings extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +19,25 @@ class _SettingsState extends State<Settings> {
       _visible = !_visible;
     });
   }
+  @override
+  void initState() {
+    super.initState();
+    BackButtonInterceptor.add(myInterceptor);
+  }
 
+  @override
+  void dispose() {
+    BackButtonInterceptor.remove(myInterceptor);
+    super.dispose();
+  }
+
+  bool myInterceptor(bool stopDefaultButtonEvent) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
+    return true;
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +45,7 @@ class _SettingsState extends State<Settings> {
             appBar: AppBar(
               centerTitle: true,
               title: Image.asset(
-                'assets/images/logo2.png',
+                'assets/images/LP_Student/LP_Student.png',
                 width: 40,
                 height: 40,
               ),
@@ -130,6 +148,7 @@ class _SettingsState extends State<Settings> {
                       ])),
                 ),
                 ),
+            
                 Padding(padding: EdgeInsets.only(top: 10), child: MaterialButton(color: Colors.red,onPressed: (){
                   signOutGoogle();
                   Navigator.of(context).push(MaterialPageRoute(

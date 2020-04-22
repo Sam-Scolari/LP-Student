@@ -22,6 +22,7 @@ class _LoginState extends State<Login> {
   //final _storage = FlutterSecureStorage();
   @override
   Widget build(BuildContext context) {
+    print("run");
     return MaterialApp(
         home: Builder(
             builder: (context) => Scaffold(
@@ -30,7 +31,7 @@ class _LoginState extends State<Login> {
                     child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(padding: EdgeInsets.only(bottom: 15),child: Image.asset(
-                          "assets/images/logo2.png",
+                          "assets/images/LP_Student/LP_Student.png",
                           scale: 2.25,
                         )),
                         SignInButton(Buttons.Google, onPressed: (){

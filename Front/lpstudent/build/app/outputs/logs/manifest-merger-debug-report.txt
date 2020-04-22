@@ -14,10 +14,14 @@ MERGED from [:firebase_core] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lp
 MERGED from [:firebase_core_web] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:shared_preferences] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_web] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:shared_preferences_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_custom_dialog] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\flutter_custom_dialog\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_web] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\1e43ec82407637f465c620e746b223b7\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a83bb62cb43b672cf00b874e0ee6110c\firebase-auth-19.2.0\AndroidManifest.xml:17:1-42:12
@@ -93,6 +97,8 @@ MERGED from [:cloud_firestore] C:\Users\sstry\Documents\GitHub\LP-Student\Front\
 MERGED from [:cloud_firestore] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a83bb62cb43b672cf00b874e0ee6110c\firebase-auth-19.2.0\AndroidManifest.xml:23:5-40:19
@@ -195,6 +201,8 @@ MERGED from [:path_provider] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lp
 MERGED from [:path_provider] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_web] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -203,6 +211,12 @@ MERGED from [:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Fro
 MERGED from [:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\shared_preferences_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_macos] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_custom_dialog] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\flutter_custom_dialog\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_custom_dialog] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\flutter_custom_dialog\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_web] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_web] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\1e43ec82407637f465c620e746b223b7\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\1e43ec82407637f465c620e746b223b7\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
@@ -373,6 +387,14 @@ ADDED from [:firebase_core] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lps
 		ADDED from [:firebase_core] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:24:5-79

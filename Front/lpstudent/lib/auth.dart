@@ -31,7 +31,7 @@ Future<String> signInWithGoogle() async {
   assert(user.uid == currentUser.uid);
 
   try{
-    int.parse(user.email.substring(0, 6));
+    //int.parse(user.email.substring(0, 6));
 
     DocumentReference ref = _db.collection('users').document(user.email.substring(0, 6));
     ref.setData({
@@ -39,15 +39,18 @@ Future<String> signInWithGoogle() async {
       'photoURL': user.photoUrl,
       'firstName': user.displayName.split(" ")[0],
       'lastName': user.displayName.split(" ")[1],
-      'points': 0
+      'points': FieldValue.increment(0)
     }, merge: true);
 
     firstName = user.displayName.split(" ")[0];
     lastName = user.displayName.split(" ")[1];
     email = user.email;
     imageUrl = user.photoUrl;
-
-    Storage.writeContent(firstName+"\n"+lastName+"\n"+email+"\n"+imageUrl);
+    
+    //Storage.writeContent(firstName, "firstName");
+    // Storage.writeContent(lastName, "lastName");
+    Storage.writeContent(email, "email");
+    // Storage.writeContent(imageUrl, "imageURL");
 
     print(user.displayName);
     print(user.email);
@@ -62,6 +65,7 @@ Future<String> signInWithGoogle() async {
 }
 
 void signOutGoogle() async{
+  await FirebaseAuth.instance.signOut();
   await googleSignIn.signOut();
   print("User Sign Out");
 }
