@@ -10,10 +10,13 @@ import 'home.dart';
 import 'settings.dart';
 import 'auth.dart';
 import 'picture.dart';
+
 class Announcements extends StatefulWidget {
   final String value;
   final String picture;
-  Announcements({Key key, this.value, this.picture}) : super(key: key);
+  final String user;
+  
+  Announcements({Key key, this.value, this.picture, this.user}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -50,36 +53,34 @@ class _AnnouncementsState extends State<Announcements> {
       });
     });
   }
+
   int range = 0;
   bool forward = true;
   int dayIWant = 0;
   int dayItIs = DateTime.now().weekday;
-  _getDate(){
-    if (widget.value == "monday"){
+  _getDate() {
+    if (widget.value == "monday") {
       dayIWant = 1;
     }
-    if (widget.value == "tuesday"){
+    if (widget.value == "tuesday") {
       dayIWant = 2;
     }
-    if (widget.value == "wednesday"){
+    if (widget.value == "wednesday") {
       dayIWant = 3;
     }
-    if (widget.value == "thursday"){
+    if (widget.value == "thursday") {
       dayIWant = 4;
     }
-    if (widget.value == "friday"){
+    if (widget.value == "friday") {
       dayIWant = 5;
     }
 
-    if (dayItIs >= dayIWant){
+    if (dayItIs >= dayIWant) {
       range = dayItIs - dayIWant;
-    }
-    else {
+    } else {
       range = dayIWant - dayItIs;
     }
-
   }
-
 
   @override
   void initState() {
@@ -96,7 +97,7 @@ class _AnnouncementsState extends State<Announcements> {
   bool myInterceptor(bool stopDefaultButtonEvent) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Home()),
+      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
     );
     return true;
   }
@@ -160,18 +161,7 @@ class _AnnouncementsState extends State<Announcements> {
                 ),
               ),
               actions: [
-                IconButton(
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.grey,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Settings()),
-                    );
-                  },
-                )
+                
               ],
               backgroundColor: Colors.white,
             ),
@@ -196,19 +186,25 @@ class _AnnouncementsState extends State<Announcements> {
                                 spreadRadius: 5,
                                 offset: Offset(0, 0))
                           ]),
-                          child: Image.asset(
-                              Picture.pickAll())),
+                          child: Image.asset(Picture.pickAll())),
                       Container(
-                          padding: EdgeInsets.all(12),
+                          padding: EdgeInsets.only(
+                              top: 12, bottom: 12, right: 5, left: 5),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 //add python short date Wednesday, Nov. 20th
                                 // Text(DateFormat('EEEE, MMMM dd').format(DateTime.now()), //heehehehehhrhreheheehrh widget.value
-                                Text(snapshot.data["date"],
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25)),
+                                Container(
+                                  constraints: BoxConstraints(maxWidth: 250),
+                                  child: Text(snapshot.data["date"],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.clip,
+                                      softWrap: false,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 25)),
+                                ),
                                 Card(
                                     color: Colors.greenAccent,
                                     shape: RoundedRectangleBorder(
@@ -235,7 +231,7 @@ class _AnnouncementsState extends State<Announcements> {
                           child: Container(
                               padding: EdgeInsets.all(8),
                               child: Text(
-                                "Happy Birthday to: "+snapshot.data['birthdays'],
+                                snapshot.data['birthdays'],
                                 textAlign: TextAlign.justify,
                               ))),
                       Divider(),
@@ -275,7 +271,10 @@ class _AnnouncementsState extends State<Announcements> {
                                                                     data[index])
                                                                 ? Colors.yellow
                                                                 : Colors.grey)),
-                                                    Text(_iconColorCheck(data[index]) ? "Saved" : "Not Saved"),
+                                                    Text(_iconColorCheck(
+                                                            data[index])
+                                                        ? "Saved"
+                                                        : "Not Saved"),
                                                   ],
                                                 ),
                                                 FlatButton(

@@ -6,6 +6,8 @@ import 'package:flutter/rendering.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 class Calendar extends StatefulWidget {
+  final String user;
+  Calendar({Key key, this.user}) : super(key: key); // user must be passed between pages to retain state
   @override
   State<StatefulWidget> createState() {
     return _CalendarState();
@@ -33,7 +35,7 @@ class _CalendarState extends State<Calendar> {
   bool myInterceptor(bool stopDefaultButtonEvent) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Home()),
+      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
     );
     return true;
   }
@@ -53,7 +55,7 @@ class _CalendarState extends State<Calendar> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Home()),
+                    MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
                   );
                 },
                 icon: Icon(

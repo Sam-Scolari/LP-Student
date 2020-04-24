@@ -1,6 +1,7 @@
 name: lpstudent
 description: A new Flutter project.
-
+# https://appsenjoy.com/download/a1bb4dab9c3e21191af68389cb526142.html
+# https://appsenjoy.com/delete/684a2b0fa8c72fb9e1697d6a06ebcbd1.html
 version: 1.0.0+10
 
 environment:
@@ -22,7 +23,7 @@ dependencies:
   intl: any
   outline_material_icons: any
   firebase_core: ^0.4.4+2
-  firebase_analytics: ^1.0.4
+
   rxdart: 0.20.0
   cloud_firestore: 0.13.4
 
@@ -36,6 +37,8 @@ dependencies:
   url_launcher: 5.4.2
   percent_indicator: "^2.1.1"
   flutter_custom_dialog: ^1.0.19
+  flutter_local_notifications: 1.4.1
+
 
 
 
@@ -95,6 +98,8 @@ flutter:
     - assets/images/Services/PowerSchool.jpg
     - assets/images/LP/LP_Original.png
     - assets/images/Services/Efunds.jpg
+    - assets/images/Services/Outlook.png
+    - assets/images/Services/Classroom.png
 
     - assets/handbook.pdf
   

@@ -50,6 +50,7 @@ class Picture{
     "assets/images/Day_Specific/General1.jpeg",
     "assets/images/Day_Specific/General2.jpg",
     "assets/images/Day_Specific/General3.jpg",
+    "assets/images/Day_Specific/General4.jpg",
     "assets/images/Day_Specific/General4.png"
   ];
 

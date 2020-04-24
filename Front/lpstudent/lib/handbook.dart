@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 class Handbook extends StatefulWidget {
+  final String user;
+  Handbook({Key key, this.user}) : super(key: key); // user must be passed between pages to retain state
   @override
   State<StatefulWidget> createState() {
     return _HandbookState();
@@ -30,7 +32,7 @@ class _HandbookState extends State<Handbook> {
   bool myInterceptor(bool stopDefaultButtonEvent) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Home()),
+      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
     );
     return true;
   }

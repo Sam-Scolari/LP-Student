@@ -15,11 +15,11 @@
 14-->C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\android\app\src\debug\AndroidManifest.xml:6:5-66
 14-->C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\android\app\src\debug\AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->[:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
-15-->[:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-76
+15-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:24:5-79
+15-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:24:22-76
 16    <uses-permission android:name="android.permission.WAKE_LOCK" />
-16-->[:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-68
-16-->[:firebase_analytics] C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-65
+16-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:25:5-68
+16-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:25:22-65
 17    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
 17-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:26:5-110
 17-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:26:22-107
@@ -38,7 +38,7 @@
 27        android:name="io.flutter.app.FlutterApplication"
 27-->C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\android\app\src\main\AndroidManifest.xml:9:9-57
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-28-->[androidx.core:core:1.0.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\c1da7862c7abb8e426855a3f78caf221\core-1.0.0\AndroidManifest.xml:22:18-86
+28-->[androidx.core:core:1.2.0] C:\Users\sstry\.gradle\caches\transforms-2\files-2.1\35f29bb1a578f0319e9c3e21730b6b49\core-1.2.0\AndroidManifest.xml:24:18-86
 29        android:debuggable="true"
 30        android:icon="@mipmap/ic_launcher"
 30-->C:\Users\sstry\Documents\GitHub\LP-Student\Front\lpstudent\android\app\src\main\AndroidManifest.xml:11:9-43

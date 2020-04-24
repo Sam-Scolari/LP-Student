@@ -56,7 +56,7 @@ Future<String> signInWithGoogle() async {
     print(user.email);
     print(user.photoUrl);
 
-    return 'signInWithGoogle succeeded: $user';
+    return user.email;
 
   } catch (Exception){
     signOutGoogle();

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -30,8 +31,15 @@ import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'schedule.dart';
 import 'clubs.dart';
 import 'handbook.dart';
-
+import 'dart:ui';
+import 'dart:async';
+import 'dart:io';
+import 'dart:core';
 class Home extends StatefulWidget {
+  final String user;
+  Home({Key key, this.user})
+      : super(key: key); // user must be passed between pages to retain state
+
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
@@ -39,6 +47,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var f = new NumberFormat("###,###", "en_US");
   bool _visible = false;
 
   void _toggle() {
@@ -47,14 +56,13 @@ class _HomeState extends State<Home> {
     });
   }
 
-  Future<String> getEmail() async {
-    return Storage.readContent("email");
-  }
-
   bool myInterceptor(bool stopDefaultButtonEvent) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Home()),
+      MaterialPageRoute(
+          builder: (context) => Home(
+                user: widget.user,
+              )),
     );
     return true;
   }
@@ -69,7 +77,7 @@ class _HomeState extends State<Home> {
         child: StreamBuilder(
             stream: Firestore.instance
                 .collection('users')
-                .document('200276')
+                .document(widget.user.substring(0, 6))
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData)
@@ -103,15 +111,14 @@ class _HomeState extends State<Home> {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(15.0),
                         child: QrImage(
-                            data: '200276',
+                            data: widget.user.substring(0, 6),
                             version: QrVersions.auto,
                             size: 220)),
                   ),
                   Padding(
                       padding: EdgeInsets.only(top: 15),
                       child: Text(
-                        //email.substring(0, 6),
-                        "200276",
+                        widget.user.substring(0, 6),
                         style: TextStyle(fontSize: 17),
                       ))
                 ]),
@@ -128,9 +135,30 @@ class _HomeState extends State<Home> {
       throw 'Could not launch $url';
     }
   }
+  // double percent = 1 - (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) / int.parse(Time.nextHourTime()));
+  // double percent = (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) - int.parse(Time.previousHourTime())) / (int.parse(Time.nextHourTime()) - int.parse(Time.previousHourTime()));
+  // void bar(){
+  //   setState(() {
+  //     percent = (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) - int.parse(Time.previousHourTime())) / (int.parse(Time.nextHourTime()) - int.parse(Time.previousHourTime()));
+  //   });
+  // }
+
+  @override
+  void initState(){
+    Timer timer = new Timer.periodic(
+      Duration(seconds: 1),
+      (Timer t) {
+        // print(Time.getCurrentIndex());
+        // bar();
+        // print(percent);
+      }
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    // print(percent);
     return MaterialApp(
         home: Builder(
             builder: (context) => Scaffold(
@@ -165,7 +193,10 @@ class _HomeState extends State<Home> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Settings()),
+                            MaterialPageRoute(
+                                builder: (context) => Settings(
+                                      user: widget.user,
+                                    )),
                           );
                         })
                   ],
@@ -187,12 +218,13 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text(
-                                      "1st - Band",
+                                    child: Text("1st",
+                                      // Time.previousHourName(),
                                       style: TextStyle(color: Colors.grey),
                                     ),
                                   ),
-                                  Text("7:45am",
+                                  Text("1",
+                                    // Time.previousHourTime(),
                                       style: TextStyle(color: Colors.grey))
                                 ],
                               ),
@@ -200,14 +232,15 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text(
-                                      "2nd - APCS",
+                                    child: Text("2nd",
+                                      // Time.currentHourName(),
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  Text("8:35am",
+                                  Text("2",
+                                    // Time.currentHourTime(),
                                       style: TextStyle(color: Colors.black))
                                 ],
                               ),
@@ -215,22 +248,24 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text(
-                                      "3rd - English 3",
+                                    child: Text("3rd",
+                                      // Time.nextHourName(),
                                       style: TextStyle(color: Colors.grey),
                                     ),
                                   ),
-                                  Text("9:20am",
+                                  Text("3",
+                                    // Time.nextHourTime(),
                                       style: TextStyle(color: Colors.grey))
                                 ],
                               ),
                             ],
                           )),
                       LinearPercentIndicator(
+                        
                         width:
                             MediaQuery.of(context).size.width, // screen width
                         lineHeight: 10,
-                        percent: .65,
+                        percent: .5,
                         isRTL: false,
                         backgroundColor: Colors.grey[300],
                         progressColor: Colors.green,
@@ -246,7 +281,7 @@ class _HomeState extends State<Home> {
                     child: StreamBuilder(
                         stream: Firestore.instance
                             .collection('users')
-                            .document('200276')
+                            .document(widget.user.substring(0, 6))
                             .snapshots(),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData)
@@ -327,9 +362,63 @@ class _HomeState extends State<Home> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Saved()),
+                                                builder: (context) => Saved(
+                                                      user: widget.user,
+                                                    )),
                                           );
                                         },
+                                      ),
+                                      ListTile(
+                                        title: Row(children: [
+                                          Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 13),
+                                              child: Card(
+                                                  elevation: 2,
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              500)),
+                                                  child: ClipOval(
+                                                    child: 
+                                                        Image.asset(
+                                                          "assets/images/Services/Classroom.png",
+                                                          scale: 7,
+                                                        ),
+                                                  ))),
+                                          Text("Google Classroom")
+                                        ]),
+                                        onTap: () =>
+                                            pushUrl("https://classroom.google.com/u/0/h"),
+                                      ),
+                                      ListTile(
+                                        title: Row(children: [
+                                          Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 13),
+                                              child: Card(
+                                                  elevation: 2,
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              500)),
+                                                  child: ClipOval(
+                                                    child: Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                top: 7,
+                                                                left: 7.75,
+                                                                right: 7.75,
+                                                                bottom: 7),
+                                                        child: Image.asset(
+                                                          "assets/images/Services/Outlook.png",
+                                                          scale: 14,
+                                                        )),
+                                                  ))),
+                                          Text("Outlook")
+                                        ]),
+                                        onTap: () =>
+                                            pushUrl("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1587651192&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3d04a7ea7b-3427-112f-6853-dc5ae99feaba&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015"),
                                       ),
                                       ListTile(
                                         title: Row(children: [
@@ -412,35 +501,41 @@ class _HomeState extends State<Home> {
                                             "https://payments.efundsforschools.com/v3/districts/56042"),
                                       ),
                                       ListTile(
-                                        title: Row(children: [
-                                          Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 1, right: 14),
-                                              child: Card(
-                                                  elevation: 2,
-                                                  color: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              500)),
-                                                  child: ClipOval(
-                                                    child: Padding(padding: EdgeInsets.all(5),child: Icon(
-                                                      Icons.book,
-                                                      color: Colors.brown,
-                                                      size: 28,
-                                                    ),
-                                                  )))),
-                                          Text('Handbook')
-                                        ]),
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Handbook()),
-                                          );
-                                        }
-                                      ),
+                                          title: Row(children: [
+                                            Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 1, right: 14),
+                                                child: Card(
+                                                    elevation: 2,
+                                                    color: Colors.white,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        500)),
+                                                    child: ClipOval(
+                                                        child: Padding(
+                                                      padding:
+                                                          EdgeInsets.all(5),
+                                                      child: Icon(
+                                                        Icons.book,
+                                                        color: Colors.brown,
+                                                        size: 28,
+                                                      ),
+                                                    )))),
+                                            Text('Handbook')
+                                          ]),
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Handbook(
+                                                        user: widget.user,
+                                                      )),
+                                            );
+                                          }),
                                     ],
                                   ).toList(),
                                 )),
@@ -459,7 +554,13 @@ class _HomeState extends State<Home> {
                                           mini: true,
                                           onPressed: () => pushUrl(
                                               "https://twitter.com/LPCavaliers?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"),
-                                        )
+                                        ),
+                                        SignInButton(
+                                          Buttons.Youtube,
+                                          mini: true,
+                                          onPressed: () => pushUrl(
+                                              "https://www.youtube.com/user/LPCavaliers"),
+                                        ),
                                       ],
                                     ))
                               ]));
@@ -498,6 +599,7 @@ class _HomeState extends State<Home> {
                                                           .toLowerCase(),
                                                       picture:
                                                           Picture.pickAll(),
+                                                      user: widget.user,
                                                     )),
                                           );
                                         },
@@ -551,7 +653,7 @@ class _HomeState extends State<Home> {
                                                                             .hasData)
                                                                           return const Center(
                                                                             child:
-                                                                                CircularProgressIndicator(),
+                                                                                CircularProgressIndicator(backgroundColor: Colors.green,),
                                                                           );
                                                                         return Text(
                                                                           snapshot
@@ -783,8 +885,13 @@ class _HomeState extends State<Home> {
                                                                     Widget>[
                                                                   // usually buttons at the bottom of the dialog
                                                                   new FlatButton(
-                                                                    child: new Text(
-                                                                        "Close", style: TextStyle(color: Colors.red),),
+                                                                    child:
+                                                                        new Text(
+                                                                      "Close",
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              Colors.red),
+                                                                    ),
                                                                     onPressed:
                                                                         () {
                                                                       Navigator.of(
@@ -842,8 +949,13 @@ class _HomeState extends State<Home> {
                                                                       Widget>[
                                                                     // usually buttons at the bottom of the dialog
                                                                     new FlatButton(
-                                                                      child: new Text(
-                                                                          "Close", style: TextStyle(color: Colors.red),),
+                                                                      child:
+                                                                          new Text(
+                                                                        "Close",
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.red),
+                                                                      ),
                                                                       onPressed:
                                                                           () {
                                                                         Navigator.of(context)
@@ -881,7 +993,9 @@ class _HomeState extends State<Home> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Calendar()));
+                                                          Calendar(
+                                                            user: widget.user,
+                                                          )));
                                             },
                                             child: Card(
                                               color: Colors.red,
@@ -927,7 +1041,9 @@ class _HomeState extends State<Home> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Schedule()));
+                                                          Schedule(
+                                                            user: widget.user,
+                                                          )));
                                             },
                                             child: Card(
                                               color: Colors.green,
@@ -974,7 +1090,9 @@ class _HomeState extends State<Home> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Clubs()));
+                                                          Clubs(
+                                                            user: widget.user,
+                                                          )));
                                             },
                                             child: Card(
                                               color: Colors.red,
@@ -1019,154 +1137,85 @@ class _HomeState extends State<Home> {
                                       ),
                                     ]),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 7, right: 7),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 15),
-                                              child: Text("1,200"),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(top: 10),
-                                              child: Text(
-                                                "LP Points",
-                                                style: TextStyle(fontSize: 26),
+                                  StreamBuilder(
+                                      stream: Firestore.instance
+                                          .collection('users')
+                                          .document(widget.user.substring(0, 6))
+                                          .snapshots(),
+                                      builder: (context, snapshot) {
+                                        if (snapshot==null || snapshot.hasError)
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+
+                                        return Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 7, right: 7),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: <Widget>[
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 15),
+                                                    child: Text(f.format(snapshot.data['points'])),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: 10),
+                                                    child: Text(
+                                                      "LP Points",
+                                                      style: TextStyle(
+                                                          fontSize: 26),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 15),
+                                                      child: Text("10,000")),
+                                                ],
                                               ),
-                                            ),
-                                            Padding(
-                                                padding:
-                                                    EdgeInsets.only(right: 15),
-                                                child: Text("10,000")),
-                                          ],
-                                        ),
-                                        GestureDetector(
-                                          onTap: null,
-                                          child: Card(
-                                            elevation: 1,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        15.0)),
-                                            child: Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15.0),
-                                                  child: Column(
-                                                    children: <Widget>[
-                                                      LinearPercentIndicator(
-                                                        lineHeight: 10,
-                                                        percent:
-                                                            3300 / 100000.0,
-                                                        backgroundColor:
-                                                            Colors.green[200],
-                                                        progressColor:
-                                                            Colors.red,
-                                                      )
-                                                    ],
-                                                  )),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ]),
-                            Visibility(
-                                visible: _visible,
-                                child: StreamBuilder(
-                                    stream: Firestore.instance
-                                        .collection('users')
-                                        .document('200276')
-                                        .snapshots(),
-                                    builder: (context, snapshot) {
-                                      if (!snapshot.hasData)
-                                        return const Center(
-                                            // child:
-                                            // CircularProgressIndicator(
-                                            //     backgroundColor: Colors.greenAccent)
-                                            );
-                                      return Container(
-                                          color: Color.fromARGB(200, 0, 0, 0),
-                                          child: Center(
-                                              child: Card(
+                                              GestureDetector(
+                                                onTap: null,
+                                                child: Card(
+                                                  elevation: 1,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               15.0)),
-                                                  child: Container(
-                                                    //Size of the card
-                                                    height: 525,
-                                                    width: 325,
-                                                    child: Column(children: [
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 25,
-                                                                  bottom: 25),
-                                                          child: Card(
-                                                              elevation: 15,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              50)),
-                                                              child: ClipOval(
-                                                                  child: Image.network(snapshot
-                                                                          .data[
-                                                                      'photoURL'])))),
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  bottom: 25),
-                                                          child: Text(
-                                                            snapshot.data[
-                                                                    'firstName'] +
-                                                                " " +
-                                                                snapshot.data[
-                                                                    'lastName'],
-                                                            style: TextStyle(
-                                                                fontSize: 35),
-                                                          )),
-                                                      Card(
-                                                        elevation: 5,
-                                                        shape: RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        15.0)),
-                                                        child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        15.0),
-                                                            child: QrImage(
-                                                                data: '200276',
-                                                                version:
-                                                                    QrVersions
-                                                                        .auto,
-                                                                size: 220)),
-                                                      ),
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 15),
-                                                          child: Text(
-                                                            //email.substring(0, 6),
-                                                            "200276",
-                                                            style: TextStyle(
-                                                                fontSize: 17),
-                                                          ))
-                                                    ]),
-                                                  ))));
-                                    }))
+                                                  child: Padding(
+                                                    padding: EdgeInsets.all(10),
+                                                    child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                        child: Column(
+                                                          children: <Widget>[
+                                                            LinearPercentIndicator(
+                                                              animation: true,
+                                                              animationDuration: 2000,
+                                                              lineHeight: 10,
+                                                              percent: snapshot.data['points'] /
+                                                                  10000.0,
+                                                              backgroundColor:
+                                                                  Colors.green[
+                                                                      200],
+                                                              progressColor:
+                                                                  Colors.red,
+                                                            )
+                                                          ],
+                                                        )),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      })
+                                ]),
                           ])));
                     }))));
   }

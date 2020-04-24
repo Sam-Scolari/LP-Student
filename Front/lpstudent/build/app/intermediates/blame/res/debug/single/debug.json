@@ -1,7 +1,7 @@
 [
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_bg.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable\\notification_bg.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable\\notification_bg.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
@@ -9,15 +9,19 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_media_action.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
@@ -25,7 +29,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable\\notification_tile_bg.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable\\notification_tile_bg.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_full_open_on_phone.png.flat",
@@ -41,7 +45,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light_normal.xml.flat",
@@ -61,7 +65,11 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_part_time.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout\\notification_template_part_time.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_media.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
@@ -81,7 +89,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
@@ -97,11 +105,11 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout-v21\\notification_template_icon_group.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout-v21\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
@@ -116,8 +124,12 @@
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },
     {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_lines_media.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light_normal.xml.flat",
@@ -133,15 +145,15 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout\\notification_action.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
@@ -153,7 +165,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_tint.xml.flat",
@@ -169,11 +181,11 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout\\notification_template_icon_group.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light_focused.xml.flat",
@@ -185,7 +197,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark.xml.flat",
@@ -193,7 +205,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
@@ -201,7 +213,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_icon_background.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable\\notification_icon_background.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable\\notification_icon_background.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
@@ -212,8 +224,20 @@
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable-xhdpi-v4\\googleg_standard_color_18.png"
     },
     {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_media_custom.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow_custom.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_dark.xml.flat",
@@ -224,12 +248,16 @@
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_icon_dark_normal.xml"
     },
     {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_media_cancel_action.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_disabled.xml.flat",
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout-v21\\notification_action_tombstone.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_dark_normal.xml.flat",
@@ -237,7 +265,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
@@ -245,11 +273,11 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_notification_action_background.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-v21\\notification_action_background.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-v21\\notification_action_background.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout\\notification_action_tombstone.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout\\notification_action_tombstone.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
@@ -261,7 +289,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
@@ -272,12 +300,16 @@
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
     },
     {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_light.xml.flat",
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
@@ -288,8 +320,16 @@
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
     },
     {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_custom_dialog.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
         "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_custom.xml.flat",
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\0330fa1606dbd2927998321d8a033742\\media-1.1.0\\res\\layout\\notification_template_big_media_custom.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
@@ -305,7 +345,7 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_part_chronometer.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout\\notification_template_part_chronometer.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark.xml.flat",
@@ -313,11 +353,11 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout-v16\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_action.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\layout-v21\\notification_action.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\layout-v21\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
@@ -325,6 +365,6 @@
     },
     {
         "merged": "C:\\Users\\sstry\\Documents\\GitHub\\LP-Student\\Front\\lpstudent\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_bg_low.xml.flat",
-        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\c1da7862c7abb8e426855a3f78caf221\\core-1.0.0\\res\\drawable\\notification_bg_low.xml"
+        "source": "C:\\Users\\sstry\\.gradle\\caches\\transforms-2\\files-2.1\\35f29bb1a578f0319e9c3e21730b6b49\\core-1.2.0\\res\\drawable\\notification_bg_low.xml"
     }
 ]
