@@ -235,7 +235,7 @@ class _AnnouncementsState extends State<Announcements> {
                                 textAlign: TextAlign.justify,
                               ))),
                       Divider(),
-                      data == null
+                      data == null || data.length == 0
                           ? Container(
                               child: Text("No announcements for today."))
                           : ListView.builder(

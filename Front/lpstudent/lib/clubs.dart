@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 
 class Clubs extends StatefulWidget {
   final String user;
@@ -17,13 +18,197 @@ class _ClubsState extends State<Clubs> {
   TextEditingController controller = TextEditingController();
   String query;
 
-  // final duplicateItems = List<String>.generate(10000, (i) => "Item $i");
-  // List<String> items = List<String>();
-  // bool done = false;
-  // int length;
+  Future<void> toggleClub(String club) async {
+    return YYDialog().build(context)
+      ..width = 300
+      ..height = 500
+      ..borderRadius = 15
+      ..widget(Padding(
+        padding: EdgeInsets.all(0.0),
+        child: StreamBuilder(
+            stream: Firestore.instance
+                .collection('clubs')
+                .document(club)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) return const Center();
+              print(snapshot.data['sponsors'].keys.toList()[0]);
+              return Center(
+                child: Column(children: [
+                  Padding(
+                      padding: EdgeInsets.all(25),
+                      child: Text(
+                        snapshot.data['name'],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 30),
+                      )),
+                  snapshot.data['sponsors'].keys.toList().length == 1
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Card(
+                              elevation: 5,
+                              color: Colors.red,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(40.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.email,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        " " +
+                                            snapshot.data['sponsors'].keys
+                                                .toList()[0],
+                                        style: TextStyle(
+                                            fontSize: 17, color: Colors.white),
+                                      ),
+                                    ],
+                                  )),
+                            )
+                          ],
+                        )
+                      : snapshot.data['sponsors'].keys.toList().length == 2
+                          ? Row(
+                              children: <Widget>[
+                                Card(
+                                    elevation: 5,
+                                    color: Colors.red,
+                                    child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(40.0),
+                                        child: Padding(padding: EdgeInsets.all(8), child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.email,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              " " +
+                                                  snapshot.data['sponsors'].keys
+                                                      .toList()[0],
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        )))),
+                                Card(
+                                    elevation: 5,
+                                    color: Colors.green,
+                                    child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(40.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.email,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              " " +
+                                                  snapshot.data['sponsors'].keys
+                                                      .toList()[1],
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ))),
+                              ],
+                            )
+                          : Row(
+                              children: <Widget>[
+                                Card(
+                                    elevation: 5,
+                                    color: Colors.red,
+                                    child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(40.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.email,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              " " +
+                                                  snapshot.data['sponsors'].keys
+                                                      .toList()[0],
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ))),
+                                Card(
+                                    elevation: 5,
+                                    color: Colors.green,
+                                    child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.email,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              " " +
+                                                  snapshot.data['sponsors'].keys
+                                                      .toList()[1],
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ))),
+                                Card(
+                                    elevation: 5,
+                                    color: Colors.red,
+                                    child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(40.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.email,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              " " +
+                                                  snapshot.data['sponsors'].keys
+                                                      .toList()[2],
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ))),
+                              ],
+                            )
+                ]),
+              );
+            }),
+      ))
+      ..show();
+  }
+
   @override
   void initState() {
-    // items.addAll(duplicateItems);
     controller.addListener(() {
       setState(() {
         query = controller.text;
@@ -31,61 +216,6 @@ class _ClubsState extends State<Clubs> {
     });
   }
 
-  // void filterSearchResults(String query) {
-  //   List<String> dummySearchList = List<String>();
-  //   dummySearchList.addAll(duplicateItems);
-  //   if (query.isNotEmpty) {
-  //     List<String> dummyListData = List<String>();
-  //     dummySearchList.forEach((item) {
-  //       if (item.contains(query)) {
-  //         dummyListData.add(item);
-  //       }
-  //     });
-  //     setState(() {
-  //       items.clear();
-  //       items.addAll(dummyListData);
-  //     });
-  //     return;
-  //   } else {
-  //     setState(() {
-  //       items.clear();
-  //       items.addAll(duplicateItems);
-  //     });
-  //   }
-  // }
-
-  // void filterSearchResults(String query) { // query = every character in the search bar
-  //   print("at least its calling the method.");
-  //   List<String> desired = new List<String>();
-  //   List<String> notDesired = new List<String>();
-  //   print(items.length);
-  //   for (String club in items){
-  //     if (club.contains(query)){
-  //       desired.add(club);
-  //     } else {
-  //       notDesired.add(club);
-  //     }
-  //   }
-  //   for(String desire in desired){
-  //     print(desire);
-  //     setState(() {
-  //       items.add(desire);
-  //     });
-  //   }
-  //   for(String notDesire in notDesired){
-  //     print(notDesire);
-  //     setState(() {
-  //       items.add(notDesire);
-  //     });
-  //   }
-
-  //   print(desired.length);
-
-  // }
-
-  // String filterSearch(String value){
-  //   return value;
-  // }
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -131,12 +261,9 @@ class _ClubsState extends State<Clubs> {
                 borderRadius: BorderRadius.circular(25),
                 child: TextField(
                   onChanged: (value) {
-                    //filterSearchResults(value);
-                    // filterSearch(value);
                     setState(() {
                       query = value;
                     });
-                    // print(query + "_"+ value + "_");
                   },
                   controller: controller,
                   decoration: InputDecoration(
@@ -167,15 +294,31 @@ class _ClubsState extends State<Clubs> {
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index) {
                         return (query == null || query == "")
-                            ? ListTile(
-                                title: Text(snapshot.data.documents[index]['name']),
-                              )
+                            ? Column(children: [
+                                ListTile(
+                                  onTap: () {
+                                    toggleClub(snapshot
+                                        .data.documents[index].documentID);
+                                  },
+                                  title: Text(
+                                      snapshot.data.documents[index]['name']),
+                                ),
+                                Divider()
+                              ])
                             : (snapshot.data.documents[index]['name']
                                     .toLowerCase()
                                     .contains(query.toLowerCase()))
-                                ? ListTile(
-                                    title: Text(snapshot.data.documents[index]['name']),
-                                  )
+                                ? Column(children: [
+                                    ListTile(
+                                      onTap: () {
+                                        toggleClub(snapshot
+                                            .data.documents[index].documentID);
+                                      },
+                                      title: Text(snapshot.data.documents[index]
+                                          ['name']),
+                                    ),
+                                    Divider()
+                                  ])
                                 : Container();
                       },
                     );
