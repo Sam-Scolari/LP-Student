@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "960444341259-o68i4snpukkbl5g41ntbiikf5ns7p4t1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lpstudent",
+            "certificate_hash": "bc99ab9f7a3dd0ff8c6c068db3e1551ea6b879fd"
+          }
+        },
+        {
           "client_id": "960444341259-bk9so4ocegiasiotgg231jfsp0890gjl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

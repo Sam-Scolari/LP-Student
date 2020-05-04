@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 class Schedule extends StatefulWidget {
   final String user;
   Schedule({Key key, this.user}) : super(key: key); // user must be passed between pages to retain state
@@ -14,25 +13,6 @@ class Schedule extends StatefulWidget {
 }
 
 class _ScheduleState extends State<Schedule> {
-  @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(myInterceptor);
-  }
-
-  @override
-  void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }
-
-  bool myInterceptor(bool stopDefaultButtonEvent) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
-    );
-    return true;
-  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -94,6 +74,63 @@ class _ScheduleState extends State<Schedule> {
               ],
               backgroundColor: Colors.white,
             ),
-            body: Container(child: Text("Hi"))));
+            body: Center(child:Container(padding: EdgeInsets.all(8),child: Column(children: [
+              Text("Schedule", style: TextStyle(fontSize: 37)),
+              Card(child: 
+              Table(
+                border: TableBorder.all(color: Colors.grey[200]),
+                children: [
+                  TableRow(children: [
+                    Column(children:[
+                      Padding(padding: EdgeInsets.all(12),child: Text('Time', style: TextStyle(fontSize: 20)))
+                    ]),
+                    Column(children:[
+                      Padding(padding: EdgeInsets.all(12),child: Text('Name', style: TextStyle(fontSize: 20)))
+                    ]),
+                    
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("7:30am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("1st - Bell", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("7:45am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("1st - Hour", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("8:40am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("2nd - Hour", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("9:35am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("3rd - Hour", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("10:30am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("4th - Hour", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("11:25am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("5th - A", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("11:55am", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("5th - B", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("12:25pm", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("5th - C", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("12:55pm", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("6th - Hour", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                  TableRow( children: [
+                    Padding(padding: EdgeInsets.all(8), child: Text("1:50pm", textAlign: TextAlign.center, style: TextStyle(fontSize: 16))),
+                    Padding(padding: EdgeInsets.all(8), child: Text("7th - Hour", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)))
+                  ]),
+                ],
+              ),)
+            ])))));
   }
 }

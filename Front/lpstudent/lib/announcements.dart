@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/foundation.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:intl/intl.dart';
 
 import 'home.dart';
@@ -44,7 +43,7 @@ class _AnnouncementsState extends State<Announcements> {
   _getSavedDataList() {
     Firestore.instance
         .collection('users')
-        .document(email.substring(0, 6))
+        .document(widget.user.substring(0, 6))
         .get()
         .then((DocumentSnapshot ds) {
       // use ds as a snapshot
@@ -82,25 +81,6 @@ class _AnnouncementsState extends State<Announcements> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(myInterceptor);
-  }
-
-  @override
-  void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }
-
-  bool myInterceptor(bool stopDefaultButtonEvent) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
-    );
-    return true;
-  }
 
   Color iconColor = Colors.grey;
 
@@ -129,11 +109,11 @@ class _AnnouncementsState extends State<Announcements> {
 
     if (_iconColorCheck(announcement)) {
       DocumentReference ref =
-          _db.collection('users').document(email.substring(0, 6));
+          _db.collection('users').document(widget.user.substring(0, 6));
       ref.updateData({'savedAnnouncements': FieldValue.arrayRemove(temp)});
     } else {
       DocumentReference ref =
-          _db.collection('users').document(email.substring(0, 6));
+          _db.collection('users').document(widget.user.substring(0, 6));
       ref.updateData({'savedAnnouncements': FieldValue.arrayUnion(temp)});
     }
   }

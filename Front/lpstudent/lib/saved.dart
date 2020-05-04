@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 class Saved extends StatefulWidget {
   final String user;
   Saved({Key key, this.user}) : super(key: key); // user must be passed between pages to retain state
@@ -19,7 +18,7 @@ class _SavedState extends State<Saved> {
     //data
     Firestore.instance
         .collection('users')
-        .document(email.substring(0, 6))
+        .document(widget.user.substring(0, 6))
         .get()
         .then((DocumentSnapshot ds) {
       // use ds as a snapshot
@@ -38,7 +37,7 @@ class _SavedState extends State<Saved> {
 
     
       DocumentReference ref =
-        _db.collection('users').document(email.substring(0, 6));
+        _db.collection('users').document(widget.user.substring(0, 6));
       ref.updateData({'savedAnnouncements': FieldValue.arrayRemove(temp)});
     }
   
@@ -47,25 +46,6 @@ class _SavedState extends State<Saved> {
     bool isPressed = false;
     Color iconColor = Colors.grey;
 
-  @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(myInterceptor);
-  }
-
-  @override
-  void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }
-
-  bool myInterceptor(bool stopDefaultButtonEvent) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
-    );
-    return true;
-  }
   @override
   Widget build(BuildContext context) {
     _getAnnouncementsList();
@@ -131,7 +111,7 @@ class _SavedState extends State<Saved> {
             body: StreamBuilder(
                 stream: Firestore.instance
                     .collection('users')
-                    .document(email.substring(0, 6))
+                    .document(widget.user.substring(0, 6))
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData)

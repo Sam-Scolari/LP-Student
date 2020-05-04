@@ -33,11 +33,17 @@ class _ClubsState extends State<Clubs> {
             builder: (context, snapshot) {
               if (!snapshot.hasData) return const Center();
               print(snapshot.data['sponsors'].keys.toList()[0]);
-              return Center(
+              return SingleChildScrollView(child: Container(
+                
+                padding: EdgeInsets.only(right: 12),
                 child: Column(children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.start,children: [IconButton(onPressed: (){
+                    Navigator.of(context).pop();
+                  },icon: Icon(Icons.clear))],),
+                  Padding(padding: EdgeInsets.only(left: 12),child: Column(children: [
                   Padding(
-                      padding: EdgeInsets.all(25),
-                      child: Text(
+                    padding: EdgeInsets.only(bottom: 8),
+                    child: Text(
                         snapshot.data['name'],
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 30),
@@ -73,6 +79,8 @@ class _ClubsState extends State<Clubs> {
                         )
                       : snapshot.data['sponsors'].keys.toList().length == 2
                           ? Row(
+                            
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Card(
                                     elevation: 5,
@@ -80,9 +88,9 @@ class _ClubsState extends State<Clubs> {
                                     child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(40.0),
-                                        child: Padding(padding: EdgeInsets.all(8), child: Row(
+                                        child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
+                                              MainAxisAlignment.spaceBetween,
                                           children: <Widget>[
                                             Icon(
                                               Icons.email,
@@ -97,7 +105,7 @@ class _ClubsState extends State<Clubs> {
                                                   color: Colors.white),
                                             ),
                                           ],
-                                        )))),
+                                        ))),
                                 Card(
                                     elevation: 5,
                                     color: Colors.green,
@@ -125,6 +133,7 @@ class _ClubsState extends State<Clubs> {
                               ],
                             )
                           : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Card(
                                     elevation: 5,
@@ -199,9 +208,12 @@ class _ClubsState extends State<Clubs> {
                                           ],
                                         ))),
                               ],
-                            )
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 5, bottom: 5),child: Text("Purpose", style: TextStyle(fontSize: 20),)),
+                            Text(snapshot.data['purpose'], textAlign: TextAlign.justify,),
+                            Padding(padding: EdgeInsets.only(top: 5, bottom: 5),child: Text("Activities", style: TextStyle(fontSize: 20),)),
                 ]),
-              );
+              )])));
             }),
       ))
       ..show();

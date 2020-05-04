@@ -3,11 +3,12 @@ import 'main.dart';
 import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Settings extends StatefulWidget {
   final String user;
-  Settings({Key key, this.user}) : super(key: key); // user must be passed between pages to retain state
+  Settings({Key key, this.user})
+      : super(key: key); // user must be passed between pages to retain state
 
   @override
   State<StatefulWidget> createState() {
@@ -24,29 +25,14 @@ class _SettingsState extends State<Settings> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(myInterceptor);
-  }
-
-  @override
-  void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }
-
-  bool myInterceptor(bool stopDefaultButtonEvent) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
-    );
-    return true;
-  }
-
+  _updataSettings(String setting, bool state) {
+    final Firestore _db = Firestore.instance;
+    DocumentReference ref =
+      _db.collection('users').document(widget.user.substring(0, 6));
+    ref.updateData({setting: state});
+   }
   @override
   Widget build(BuildContext context) {
-    print(widget.user);
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
@@ -60,7 +46,10 @@ class _SettingsState extends State<Settings> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Home(user: widget.user,)),
+                    MaterialPageRoute(
+                        builder: (context) => Home(
+                              user: widget.user,
+                            )),
                   );
                 },
                 icon: Icon(
@@ -108,12 +97,38 @@ class _SettingsState extends State<Settings> {
                     Icons.more_vert,
                     color: Colors.grey,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Bug / Feature Request?"),
+                            content:
+                                Text("Email me at: sstryker.mobile@gmail.com"),
+                            actions: <Widget>[
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("Close",
+                                    style: TextStyle(color: Colors.red)),
+                              )
+                            ],
+                          );
+                        });
+                  },
                 )
               ],
               backgroundColor: Colors.white,
             ),
-            body: Padding(
+            body: StreamBuilder(
+            stream: Firestore.instance
+                .collection('users')
+                .document(widget.user.substring(0, 6))
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) return const CircularProgressIndicator(backgroundColor: Colors.green,);
+              return Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
                     child: Stack(children: [
@@ -138,10 +153,11 @@ class _SettingsState extends State<Settings> {
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     Switch(
-                                      value: true,
+                                      value: snapshot.data['lunchSettings'],
                                       onChanged: (bool value) {
+                                        _updataSettings('lunchSettings', !value);
                                         setState(() {
-                                          value = false;
+                                          value = !value;
                                         });
                                       },
                                       activeColor: Colors.green,
@@ -156,10 +172,11 @@ class _SettingsState extends State<Settings> {
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     Switch(
-                                      value: true,
+                                      value: snapshot.data['breakfastSettings'],
                                       onChanged: (bool value) {
+                                        _updataSettings('breakfastSettings', !value);
                                         setState(() {
-                                          value = false;
+                                          value = !value;
                                         });
                                       },
                                       activeColor: Colors.green,
@@ -174,10 +191,11 @@ class _SettingsState extends State<Settings> {
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     Switch(
-                                      value: true,
+                                      value: snapshot.data['announcementSettings'],
                                       onChanged: (bool value) {
+                                        _updataSettings('announcementSettings', !value);
                                         setState(() {
-                                          value = false;
+                                          value = !value;
                                         });
                                       },
                                       activeColor: Colors.green,
@@ -197,7 +215,7 @@ class _SettingsState extends State<Settings> {
                             child: Column(children: [
                               Text("Your Information",
                                   style: TextStyle(fontSize: 22)),
-                              Row(
+                              Padding(padding: EdgeInsets.only(top: 10),child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -205,15 +223,15 @@ class _SettingsState extends State<Settings> {
                                       "Full Name",
                                       style: TextStyle(fontSize: 17),
                                     ),
-                                    Expanded(child: TextField(
-                                      readOnly: true,
-                                      
-                                      decoration: InputDecoration(border: InputBorder.none, labelText: 'Samuel Scolari', fillColor: Colors.grey[200]),
-
-
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      child: Container(color: Colors.grey[200],child: Padding(padding: EdgeInsets.only(top: 5, bottom: 5, left:8, right:8),child: Text(
+                                        snapshot.data['firstName']+" "+snapshot.data['lastName'],
+                                        style: TextStyle(fontSize: 17),
+                                      )),
                                     ))
-                                  ]),
-                              Row(
+                                  ])),
+                                  Padding(padding: EdgeInsets.only(top: 10),child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -221,17 +239,15 @@ class _SettingsState extends State<Settings> {
                                       "ID Number",
                                       style: TextStyle(fontSize: 17),
                                     ),
-                                    Switch(
-                                      value: true,
-                                      onChanged: (bool value) {
-                                        setState(() {
-                                          value = false;
-                                        });
-                                      },
-                                      activeColor: Colors.green,
-                                    ),
-                                  ]),
-                              Row(
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      child: Container(color: Colors.grey[200],child: Padding(padding: EdgeInsets.only(top: 5, bottom: 5, left:8, right:8),child: Text(
+                                        snapshot.data.documentID,
+                                        style: TextStyle(fontSize: 17),
+                                      )),
+                                    ))
+                                  ])),
+                                  Padding(padding: EdgeInsets.only(top: 10),child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -239,52 +255,31 @@ class _SettingsState extends State<Settings> {
                                       "Email",
                                       style: TextStyle(fontSize: 17),
                                     ),
-                                    Switch(
-                                      value: true,
-                                      onChanged: (bool value) {
-                                        setState(() {
-                                          value = false;
-                                        });
-                                      },
-                                      activeColor: Colors.green,
-                                    ),
-                                  ]),
-                                  Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Class",
-                                      style: TextStyle(fontSize: 17),
-                                    ),
-                                    Switch(
-                                      value: true,
-                                      onChanged: (bool value) {
-                                        setState(() {
-                                          value = false;
-                                        });
-                                      },
-                                      activeColor: Colors.green,
-                                    ),
-                                  ]),
-                                  Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Birthday",
-                                      style: TextStyle(fontSize: 17),
-                                    ),
-                                    Switch(
-                                      value: true,
-                                      onChanged: (bool value) {
-                                        setState(() {
-                                          value = false;
-                                        });
-                                      },
-                                      activeColor: Colors.green,
-                                    ),
-                                  ]),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      child: Container(color: Colors.grey[200],child: Padding(padding: EdgeInsets.only(top: 5, bottom: 5, left:8, right:8),child: Text(
+                                        snapshot.data['email'],
+                                        style: TextStyle(fontSize: 17),
+                                      )),
+                                    ))
+                                  ])),
+                                  // Padding(padding: EdgeInsets.only(top: 10),child: Row(
+                                  // mainAxisAlignment:
+                                  //     MainAxisAlignment.spaceBetween,
+                                  // children: [
+                                  //   Text(
+                                  //     "Class",
+                                  //     style: TextStyle(fontSize: 17),
+                                  //   ),
+                                  //   ClipRRect(
+                                  //     borderRadius: BorderRadius.circular(15.0),
+                                  //     child: Container(color: Colors.grey[200],child: Padding(padding: EdgeInsets.only(top: 5, bottom: 5, left:8, right:8),child: Text(
+                                  //       "Senior 2020",
+                                  //       style: TextStyle(fontSize: 17),
+                                  //     )),
+                                  //   ))
+                                  // ])),
+                            
                             ])),
                       ),
                     ),
@@ -293,7 +288,7 @@ class _SettingsState extends State<Settings> {
                         child: MaterialButton(
                             color: Colors.red,
                             onPressed: () {
-                              signOutGoogle();
+                              AuthProvider.logOut();
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => Login()));
                             },
@@ -302,6 +297,6 @@ class _SettingsState extends State<Settings> {
                               style: TextStyle(color: Colors.white),
                             )))
                   ]),
-                ])))));
+                ])));})));
   }
 }

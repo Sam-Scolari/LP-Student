@@ -21,7 +21,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'saved.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'calendar.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -30,11 +29,11 @@ import 'picture.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'schedule.dart';
 import 'clubs.dart';
-import 'handbook.dart';
 import 'dart:ui';
 import 'dart:async';
 import 'dart:io';
 import 'dart:core';
+
 class Home extends StatefulWidget {
   final String user;
   Home({Key key, this.user})
@@ -56,21 +55,10 @@ class _HomeState extends State<Home> {
     });
   }
 
-  bool myInterceptor(bool stopDefaultButtonEvent) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => Home(
-                user: widget.user,
-              )),
-    );
-    return true;
-  }
-
   Future<void> toggleID() async {
     return YYDialog().build(context)
       ..width = 300
-      ..height = 500
+      ..height = 520
       ..borderRadius = 15
       ..widget(Padding(
         padding: EdgeInsets.all(0.0),
@@ -87,8 +75,11 @@ class _HomeState extends State<Home> {
                     );
               return Center(
                 child: Column(children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.start,children: [IconButton(onPressed: (){
+                    Navigator.of(context).pop();
+                  },icon: Icon(Icons.clear))],),
                   Padding(
-                      padding: EdgeInsets.only(top: 25, bottom: 25),
+                      padding: EdgeInsets.only(bottom: 25),
                       child: Card(
                           elevation: 15,
                           shape: RoundedRectangleBorder(
@@ -135,30 +126,41 @@ class _HomeState extends State<Home> {
       throw 'Could not launch $url';
     }
   }
-  // double percent = 1 - (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) / int.parse(Time.nextHourTime()));
-  // double percent = (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) - int.parse(Time.previousHourTime())) / (int.parse(Time.nextHourTime()) - int.parse(Time.previousHourTime()));
-  // void bar(){
-  //   setState(() {
-  //     percent = (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) - int.parse(Time.previousHourTime())) / (int.parse(Time.nextHourTime()) - int.parse(Time.previousHourTime()));
-  //   });
-  // }
 
-  @override
-  void initState(){
-    Timer timer = new Timer.periodic(
-      Duration(seconds: 1),
-      (Timer t) {
-        // print(Time.getCurrentIndex());
-        // bar();
-        // print(percent);
-      }
-    );
+  // double percent = 1 - (((((DateTime.now().hour*60) + DateTime.now().minute) * 60) + DateTime.now().second) / int.parse(Time.nextHourTime()));
+  double percent =
+      (((((DateTime.now().hour * 60) + DateTime.now().minute) * 60) +
+                  DateTime.now().second) -
+              Time.previousHourTime()) /
+          (Time.nextHourTime() - Time.previousHourTime());
+  void bar() {
+    if (Time.hourTimeCheck()){
+      setState(() {
+        percent = ((((
+          (DateTime.now().hour * 60) + DateTime.now().minute) * 60) + DateTime.now().second) // This gets the ammount of seconds it currently is from midnight
+          -
+          Time.currentHourTime()) // This gets the ammount of seconds the start of a given hour was since midnight
+          /
+          (Time.nextHourTime() - Time.currentHourTime()); // This gets the range of seconds that class is
+      });
+    }
+    else {
+      percent = 0;
+    }
   }
 
+  @override
+  void initState() {
+    Timer timer = new Timer.periodic(Duration(seconds: 1), (Timer t) {
+      // print(Time.getCurrentIndex());
+      bar();
+      // print(percent);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // print(percent);
+    // print(Time.hourTimeCheck());
     return MaterialApp(
         home: Builder(
             builder: (context) => Scaffold(
@@ -218,13 +220,15 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text("1st",
-                                      // Time.previousHourName(),
+                                    child: Text(
+                                      // "1st",
+                                      Time.previousHourName(),
                                       style: TextStyle(color: Colors.grey),
                                     ),
                                   ),
-                                  Text("1",
-                                    // Time.previousHourTime(),
+                                  Text(
+                                      // "1",
+                                      Time.previousHourStringTime(),
                                       style: TextStyle(color: Colors.grey))
                                 ],
                               ),
@@ -232,15 +236,17 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text("2nd",
-                                      // Time.currentHourName(),
+                                    child: Text(
+                                      // "2nd",
+                                      Time.currentHourName(),
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  Text("2",
-                                    // Time.currentHourTime(),
+                                  Text(
+                                      // "2",
+                                      "Now",
                                       style: TextStyle(color: Colors.black))
                                 ],
                               ),
@@ -248,24 +254,25 @@ class _HomeState extends State<Home> {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child: Text("3rd",
-                                      // Time.nextHourName(),
+                                    child: Text(
+                                      // "3rd",
+                                      Time.nextHourName(),
                                       style: TextStyle(color: Colors.grey),
                                     ),
                                   ),
-                                  Text("3",
-                                    // Time.nextHourTime(),
+                                  Text(
+                                      // "3",
+                                      Time.nextHourStringTime(),
                                       style: TextStyle(color: Colors.grey))
                                 ],
                               ),
                             ],
                           )),
                       LinearPercentIndicator(
-                        
                         width:
                             MediaQuery.of(context).size.width, // screen width
                         lineHeight: 10,
-                        percent: .5,
+                        percent: percent,
                         isRTL: false,
                         backgroundColor: Colors.grey[300],
                         progressColor: Colors.green,
@@ -380,16 +387,15 @@ class _HomeState extends State<Home> {
                                                           BorderRadius.circular(
                                                               500)),
                                                   child: ClipOval(
-                                                    child: 
-                                                        Image.asset(
-                                                          "assets/images/Services/Classroom.png",
-                                                          scale: 7,
-                                                        ),
+                                                    child: Image.asset(
+                                                      "assets/images/Services/Classroom.png",
+                                                      scale: 7,
+                                                    ),
                                                   ))),
                                           Text("Google Classroom")
                                         ]),
-                                        onTap: () =>
-                                            pushUrl("https://classroom.google.com/u/0/h"),
+                                        onTap: () => pushUrl(
+                                            "https://classroom.google.com/u/0/h"),
                                       ),
                                       ListTile(
                                         title: Row(children: [
@@ -417,8 +423,8 @@ class _HomeState extends State<Home> {
                                                   ))),
                                           Text("Outlook")
                                         ]),
-                                        onTap: () =>
-                                            pushUrl("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1587651192&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3d04a7ea7b-3427-112f-6853-dc5ae99feaba&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015"),
+                                        onTap: () => pushUrl(
+                                            "https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1587651192&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3d04a7ea7b-3427-112f-6853-dc5ae99feaba&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015"),
                                       ),
                                       ListTile(
                                         title: Row(children: [
@@ -527,14 +533,7 @@ class _HomeState extends State<Home> {
                                             Text('Handbook')
                                           ]),
                                           onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Handbook(
-                                                        user: widget.user,
-                                                      )),
-                                            );
+                                            pushUrl("https://docs.google.com/viewerng/viewer?url=https://www.lphs.net//cms/lib/IL01904775/Centricity/Domain/31/Documents/2019-20+Student+Handbook+Final.pdf");
                                           }),
                                     ],
                                   ).toList(),
@@ -653,7 +652,9 @@ class _HomeState extends State<Home> {
                                                                             .hasData)
                                                                           return const Center(
                                                                             child:
-                                                                                CircularProgressIndicator(backgroundColor: Colors.green,),
+                                                                                CircularProgressIndicator(
+                                                                              backgroundColor: Colors.green,
+                                                                            ),
                                                                           );
                                                                         return Text(
                                                                           snapshot
@@ -700,16 +701,10 @@ class _HomeState extends State<Home> {
                                                                       TextAlign
                                                                           .center,
                                                                   style: TextStyle(
-                                                                      color: Time.activeIntDay == 1
-                                                                          ? Colors
-                                                                              .green
-                                                                          : Time.getState(1)
-                                                                              ? Colors
-                                                                                  .black
-                                                                              : Colors
-                                                                                  .grey,
-                                                                      fontSize:
-                                                                          18))))),
+                                                                      color: Time.activeIntDay == 1 || Time.activeIntDay > 5 // Monday should appear green even if it is the weekend.
+                                                                          ? Colors.green
+                                                                          : Time.getState(1) ? Colors.black : Colors.grey,
+                                                                      fontSize: 18))))),
                                                   Flexible(
                                                       child: Container(
                                                           child: FlatButton(
@@ -1143,7 +1138,9 @@ class _HomeState extends State<Home> {
                                           .document(widget.user.substring(0, 6))
                                           .snapshots(),
                                       builder: (context, snapshot) {
-                                        if (snapshot==null || snapshot.hasError)
+                                        if (snapshot == null ||
+                                            snapshot.hasError ||
+                                            widget.user == null)
                                           return const Center(
                                             child: CircularProgressIndicator(),
                                           );
@@ -1161,7 +1158,9 @@ class _HomeState extends State<Home> {
                                                   Padding(
                                                     padding: EdgeInsets.only(
                                                         left: 15),
-                                                    child: Text(f.format(snapshot.data['points'])),
+                                                    child: Text(f.format(
+                                                        snapshot
+                                                            .data['points'])),
                                                   ),
                                                   Padding(
                                                     padding: EdgeInsets.only(
@@ -1196,9 +1195,12 @@ class _HomeState extends State<Home> {
                                                           children: <Widget>[
                                                             LinearPercentIndicator(
                                                               animation: true,
-                                                              animationDuration: 2000,
+                                                              animationDuration:
+                                                                  2000,
                                                               lineHeight: 10,
-                                                              percent: snapshot.data['points'] /
+                                                              percent: snapshot
+                                                                          .data[
+                                                                      'points'] /
                                                                   10000.0,
                                                               backgroundColor:
                                                                   Colors.green[

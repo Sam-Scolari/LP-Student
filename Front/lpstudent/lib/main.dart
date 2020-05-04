@@ -23,6 +23,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String error = "base";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,8 +44,12 @@ class _LoginState extends State<Login> {
                         SignInButton(
                           Buttons.Google,
                           onPressed: () {
-                            signInWithGoogle().then((email) {
-                              if (email.substring(6) == "@students.lphs.net") {
+                            AuthProvider.loginWithGoogle().then((email) {
+                              print(email);
+                              setState(() {
+                                error = email;
+                              });
+                              if (email.contains("@lphs.net") || email.contains("@students.lphs.net")) {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -52,17 +58,18 @@ class _LoginState extends State<Login> {
                                             )));
                               } else {
                                 try {
-                                  signOutGoogle();
-                                } catch (Error) {
-                                  print("Failed signout attempt...");
+                                  AuthProvider.logOut();
+                                } catch (e) {
+                                  print(e.message);
                                 }
                                 showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
                                         title: Text("Sign in error."),
-                                        content: Text(
-                                            "You may only sign in using an authorized LPHS student email. Please retry with a different email."),
+                                        // content: Text(
+                                        //     "You may only sign in using an authorized LPHS email. Please retry with a different email."),
+                                        content: Text(error),
                                         actions: <Widget>[
                                           FlatButton(
                                             onPressed: () {

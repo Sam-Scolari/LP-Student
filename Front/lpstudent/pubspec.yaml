@@ -29,15 +29,18 @@ dependencies:
 
   flutter_signin_button: 1.0.0
 
-  #Codemagic tutorial 
-  firebase_auth: 0.15.4
-  google_sign_in: ^3.2.4
 
-  back_button_interceptor: any
+
+  
+  #firebase_auth: 0.15.4
+  firebase_auth: 0.16.0
+  #google_sign_in: ^3.2.4
+  google_sign_in: 4.4.4
+
   url_launcher: 5.4.2
   percent_indicator: "^2.1.1"
   flutter_custom_dialog: ^1.0.19
-  flutter_local_notifications: 1.4.1
+  firebase_messaging: any
 
 
 
@@ -102,7 +105,8 @@ flutter:
     - assets/images/Services/Classroom.png
 
     - assets/handbook.pdf
-  
+
+    - assets/images/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png
 
   fonts:
     - family: Roboto
@@ -111,7 +115,7 @@ flutter:
 
 
   
-flutter_icons:
-  image_path: "assets/appicon.png" 
-  android: true
-  ios: true
+# flutter_icons:
+#   image_path: "assets/images/ic_launcher/res/mipmap-xxxhdpi/ic_launcher.png" 
+#   android: true
+#   ios: true
